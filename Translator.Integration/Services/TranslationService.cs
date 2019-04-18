@@ -19,7 +19,7 @@ namespace Translator.Integration.Services
             _languageSettings = languageSettings;
         }
 
-        public async Task<string> GetTranslation(string source)
+        public async Task<string> GetTranslationAsync(string source)
         {
             var requestUrl = GetRequestUrl(source);
 
