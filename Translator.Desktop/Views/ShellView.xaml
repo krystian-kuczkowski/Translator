@@ -4,9 +4,87 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Translator.Desktop.Views"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"   
         mc:Ignorable="d"
-        Title="ShellView" Height="450" Width="800">
-    <Grid>
-        
+        WindowStyle="None"
+        MinHeight="{Binding WindowMinimumHeight}"
+        MinWidth="{Binding WindowMinimumWidth}"
+        AllowsTransparency="True"
+        Title="ShellView" Height="400" Width="500" x:Name="shellView">
+
+    <!-- installed Expression.Blend.Sdk -->
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="StateChanged">
+            <i:InvokeCommandAction Command="{Binding Path=StateChangedCommand}" 
+                                   CommandParameter="{Binding ElementName=shellView, Path=WindowState}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Path=WindowLoadedCommand}"
+                                   CommandParameter="{Binding ElementName=shellView}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Window.Resources>
+        <Style TargetType="{x:Type local:ShellView}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Window}">
+
+                        <!-- outer border with the dropshadow margin -->
+                        <Border Padding="{Binding OuterMarginSizeThickness}">
+
+                            <!-- the main window outline -->
+                            <Grid>
+
+                                <!-- the main window border and dropshadow with resizable outline margin -->
+                                <Border CornerRadius="{Binding WindowCornerRadius}" 
+                                        Background="{StaticResource BackgroundDarkBrush}">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="0" Opacity="0.4"/>
+                                    </Border.Effect>
+                                </Border>
+
+                                <!-- the main window content -->
+                                <Grid>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="{Binding TitleBarHeightGridLength}"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <!-- title bar -->
+                                    <Grid Grid.Row="0">
+
+                                    </Grid>
+
+                                    <!-- content -->
+                                    <Grid Background="{StaticResource BackgroundDarkGrayBrush}" Grid.Row="1">
+
+                                    </Grid>
+
+                                </Grid>
+
+                            </Grid>
+
+                        </Border>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome
+            ResizeBorderThickness="{Binding ResizeBorderThickness}"
+            CaptionHeight="{Binding TitleBarHeight}"
+            CornerRadius="0"
+            GlassFrameThickness="0"/>
+    </WindowChrome.WindowChrome>
+
+    <Grid Background="{StaticResource BackgroundDarkBrush}">
+
     </Grid>
+    
 </Window>
