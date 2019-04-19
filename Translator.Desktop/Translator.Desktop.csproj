@@ -113,5 +113,19 @@
   <ItemGroup>
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Translator.Application\Translator.Application.csproj">
+      <Project>{94AE4731-6E84-49D7-9567-BAC904E36FF7}</Project>
+      <Name>Translator.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Translator.Integration\Translator.Integration.csproj">
+      <Project>{A53E42C6-402D-42B8-A4AA-D907F6450B27}</Project>
+      <Name>Translator.Integration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Translator.Persistence\Translator.Persistence.csproj">
+      <Project>{301A0852-A4A5-40A2-87E1-272BA29B9F2F}</Project>
+      <Name>Translator.Persistence</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
