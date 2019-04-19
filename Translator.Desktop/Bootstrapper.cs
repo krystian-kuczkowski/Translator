@@ -5,7 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Translator.Application.Helpers;
+using Translator.Application.Services;
+using Translator.Application.Storage;
 using Translator.Desktop.ViewModels;
+using Translator.Integration.Helpers;
+using Translator.Integration.Services;
+using Translator.Persistence.Helpers;
+using Translator.Persistence.Storage;
 
 namespace Translator.Desktop
 {
@@ -25,6 +32,12 @@ namespace Translator.Desktop
             _container
                 .Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>();
+
+            _container
+                .PerRequest<ILanguageSettings, LanguageSettings>()
+                .PerRequest<IStorageSettings, StorageSettings>()
+                .PerRequest<ITranslationService, TranslationService>()
+                .PerRequest<ITranslationsStorage, TranslationsStorage>();
 
             GetType().Assembly.GetTypes()
                 .Where(type => type.IsClass)
