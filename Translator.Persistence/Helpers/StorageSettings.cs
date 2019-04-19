@@ -13,7 +13,7 @@ namespace Translator.Persistence.Helpers
     {
         public string DirectoryName {
             get {
-                return Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Translations");
             }
         }
 
@@ -35,7 +35,9 @@ namespace Translator.Persistence.Helpers
 
         public StorageSettings()
         {
-            _currentFileName = GetFromConfig("file") ?? null;
+            var file = GetFromConfig("file");
+
+            _currentFileName = String.IsNullOrWhiteSpace(file) ? null : file;
         }
 
         private IEnumerable<string> GetFileNames()
