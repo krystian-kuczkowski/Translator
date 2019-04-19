@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Translator.Desktop.Styles">
+
+    <Color x:Key="BackgroundDark">#222222</Color>
+    <SolidColorBrush x:Key="BackgroundDarkBrush" Color="{StaticResource BackgroundDark}"/>
+
+    <Color x:Key="BackgroundDarkGray">#323232</Color>
+    <SolidColorBrush x:Key="BackgroundDarkGrayBrush" Color="{StaticResource BackgroundDarkGray}"/>
+
+    <Color x:Key="BackgroundLightGray">#3a3a3a</Color>
+    <SolidColorBrush x:Key="BackgroundLightGrayBrush" Color="{StaticResource BackgroundLightGray}"/>
+
+    <Color x:Key="ForegroundDark">#767676</Color>
+    <SolidColorBrush x:Key="ForegroundDarkBrush" Color="{StaticResource ForegroundDark}"/>
+
+    <Color x:Key="ForegroundLight">#ffffff</Color>
+    <SolidColorBrush x:Key="ForegroundLightBrush" Color="{StaticResource ForegroundLight}"/>
+
+</ResourceDictionary>
