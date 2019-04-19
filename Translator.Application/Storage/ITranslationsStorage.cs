@@ -10,6 +10,7 @@ namespace Translator.Application.Storage
     public interface ITranslationsStorage
     {
         void AddFile(string fileName);
+        void SetFile(string fileName);
         void AppendTranslationData(TranslationData translationData);
         IEnumerable<string> GetFiles();
     }

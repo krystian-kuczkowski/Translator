@@ -31,6 +31,11 @@ namespace Translator.Persistence.Storage
             File.Create(path);
         }
 
+        public void SetFile(string fileName)
+        {
+            _storageSettings.CurrentFileName = fileName;
+        }
+
         public void AppendTranslationData(TranslationData translationData)
         {
             var path = Path.Combine(_storageSettings.DirectoryName, _storageSettings.CurrentFileName = ".txt");
