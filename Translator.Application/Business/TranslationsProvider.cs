@@ -22,7 +22,7 @@ namespace Translator.Application.Business
 
         private string Translate(string source)
         {
-            var target = _translationService.GetTranslationAsync(source).GetAwaiter().GetResult();
+            var target = _translationService.GetTranslation(source);
 
             var data = new TranslationData
             {

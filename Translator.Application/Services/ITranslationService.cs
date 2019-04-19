@@ -8,6 +8,6 @@ namespace Translator.Application.Services
 {
     public interface ITranslationService
     {
-        Task<string> GetTranslationAsync(string source);
+        string GetTranslation(string source);
     }
 }

@@ -17,25 +17,26 @@ namespace Translator.Integration.Services
         public TranslationService(ILanguageSettings languageSettings)
         {
             _languageSettings = languageSettings;
+            _httpClient = new HttpClient();
         }
 
-        public async Task<string> GetTranslationAsync(string source)
+        public string GetTranslation(string source)
         {
             var requestUrl = GetRequestUrl(source);
 
-            var response = await _httpClient.GetAsync(requestUrl);
+            var response = _httpClient.GetAsync(requestUrl).GetAwaiter().GetResult();
 
             if (!response.IsSuccessStatusCode)
                 return null;
 
-            var body = await response.Content.ReadAsStringAsync();
+            var body = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
             return ExtractTranslation(body);
         }
 
         private string ExtractTranslation(string body)
         {
-            body = body.Substring(body.IndexOf("\""));
+            body = body.Substring(body.IndexOf("\"") + 1);
 
             return body.Substring(0, body.IndexOf("\""));
         }
@@ -43,7 +44,7 @@ namespace Translator.Integration.Services
         private string GetRequestUrl(string source)
         {
             var sourceLang = _languageSettings.SourceLanguage.ToString().ToLower();
-            var targetLang = _languageSettings.SourceLanguage.ToString().ToLower();
+            var targetLang = _languageSettings.TargetLanguage.ToString().ToLower();
 
             return $"https://translate.googleapis.com/translate_a/single?client=gtx&sl={sourceLang}&tl={targetLang}&dt=t&q={source}";
         }
