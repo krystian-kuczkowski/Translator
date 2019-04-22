@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Caliburn.Micro;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Translator.Desktop.Commands;
+using Translator.Desktop.Helpers;
 
 namespace Translator.Desktop.ViewModels
 {
@@ -14,6 +16,7 @@ namespace Translator.Desktop.ViewModels
         private WindowState _windowState;
         private readonly int _outerMarginSize = 10;
         private readonly int _windowRadius = 0;
+        private WindowDockPosition dockPosition = WindowDockPosition.Undocked;
 
         public double WindowMinimumWidth {
             get => 450;
@@ -32,7 +35,7 @@ namespace Translator.Desktop.ViewModels
         }
 
         public bool Borderless {
-            get => _windowState == WindowState.Maximized;
+            get => _windowState == WindowState.Maximized || dockPosition != WindowDockPosition.Undocked;
         }
 
         public GridLength TitleBarHeightGridLength {
@@ -65,6 +68,9 @@ namespace Translator.Desktop.ViewModels
 
         public ICommand StateChangedCommand { get; private set; }
         public ICommand WindowLoadedCommand { get; private set; }
+        public ICommand WindowMinimizeCommand { get; private set; }
+        public ICommand WindowMaximizeCommand { get; private set; }
+        public ICommand WindowCloseCommand { get; private set; }
 
         public ShellViewModel()
         {
@@ -75,7 +81,28 @@ namespace Translator.Desktop.ViewModels
 
             WindowLoadedCommand = new RelayCommand(param => {
                 _windowState = ((Window)param).WindowState;
+                var resizer = new WindowResizer((Window)param);
+                resizer.WindowDockChanged += (dock) => {
+                    dockPosition = dock;
+                    OnWindowResized();
+                };
                 OnWindowResized();
+            });
+
+            WindowMinimizeCommand = new RelayCommand(param => {
+                ((Window)param).WindowState = WindowState.Minimized;
+                _windowState = ((Window)param).WindowState;
+                OnWindowResized();
+            });
+
+            WindowMaximizeCommand = new RelayCommand(param => {
+                ((Window)param).WindowState ^= WindowState.Maximized;
+                _windowState = ((Window)param).WindowState;
+                OnWindowResized();
+            });
+
+            WindowCloseCommand = new RelayCommand(param => {
+                ((Window)param).Close();
             });
         }
 
