@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Translator.Desktop.Helpers;
 
 namespace Translator.Desktop.Views
 {
@@ -22,6 +23,8 @@ namespace Translator.Desktop.Views
         public ShellView()
         {
             InitializeComponent();
+
+            new WindowResizer(this);
         }
     }
 }
