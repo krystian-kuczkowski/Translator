@@ -56,12 +56,61 @@
                                     <!-- title bar -->
                                     <Grid Grid.Row="0">
 
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <!-- buttons -->
+                                        <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                            
+                                            <!-- minimize button -->
+                                            <Button
+                                                Style="{StaticResource ImageButton}"
+                                                Command="{Binding Path=WindowMinimizeCommand}"
+                                                CommandParameter="{Binding ElementName=shellView}">
+                                                <Button.Content>
+                                                    <Image 
+                                                        RenderOptions.BitmapScalingMode="HighQuality" 
+                                                        Source="/Images/minimize.png"/>
+                                                </Button.Content>
+                                            </Button>
+                                            
+                                            <!-- maximize button -->
+                                            <Button
+                                                Style="{StaticResource ImageButton}"
+                                                Command="{Binding Path=WindowMaximizeCommand}"
+                                                CommandParameter="{Binding ElementName=shellView}">
+                                                <Button.Content>
+                                                    <Image
+                                                        RenderOptions.BitmapScalingMode="HighQuality"
+                                                        Source="/Images/maximize.png"/>
+                                                </Button.Content>
+                                            </Button>
+
+                                            <!-- close button -->
+                                            <Button
+                                                Style="{StaticResource CloseButton}"
+                                                Command="{Binding Path=WindowCloseCommand}"
+                                                CommandParameter="{Binding ElementName=shellView}">
+                                                <Button.Content>
+                                                    <Image
+                                                        RenderOptions.BitmapScalingMode="HighQuality"
+                                                        Source="/Images/close.png"/>
+                                                </Button.Content>
+                                            </Button>
+                                            
+                                        </StackPanel>
+                                        
                                     </Grid>
 
                                     <!-- content -->
-                                    <Grid Background="{StaticResource BackgroundDarkGrayBrush}" Grid.Row="1">
-
-                                    </Grid>
+                                    <Border 
+                                        Grid.Row="1" 
+                                        Background="{StaticResource BackgroundDarkGrayBrush}"
+                                        Padding="{Binding InnerContentPadding}">
+                                        
+                                    </Border>
 
                                 </Grid>
 
@@ -83,8 +132,8 @@
             GlassFrameThickness="0"/>
     </WindowChrome.WindowChrome>
 
-    <Grid Background="{StaticResource BackgroundDarkBrush}">
+    <!--<Grid Background="{StaticResource BackgroundDarkBrush}">
 
-    </Grid>
+    </Grid>-->
     
 </Window>
