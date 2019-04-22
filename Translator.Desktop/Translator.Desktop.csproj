@@ -69,6 +69,7 @@
     </ApplicationDefinition>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Helpers\WindowResizer.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\ShellView.xaml.cs">
@@ -164,6 +165,31 @@
       <Project>{301A0852-A4A5-40A2-87E1-272BA29B9F2F}</Project>
       <Name>Translator.Persistence</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\delete.png" />
+    <Resource Include="Images\error.png" />
+    <Resource Include="Images\file.png" />
+    <Resource Include="Images\flag-blue.png" />
+    <Resource Include="Images\flag-green.png" />
+    <Resource Include="Images\folder.png" />
+    <Resource Include="Images\left-arrow-green.png" />
+    <Resource Include="Images\left-arrow-violet.png" />
+    <Resource Include="Images\minus.png" />
+    <Resource Include="Images\plus.png" />
+    <Resource Include="Images\repeat.png" />
+    <Resource Include="Images\right-arrow-green.png" />
+    <Resource Include="Images\right-arrow-violet.png" />
+    <Resource Include="Images\settings.png" />
+    <Resource Include="Images\success.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\close.png" />
+    <Resource Include="Images\maximize.png" />
+    <Resource Include="Images\minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\close-red.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
