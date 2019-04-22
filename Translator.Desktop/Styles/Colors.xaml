@@ -17,4 +17,7 @@
     <Color x:Key="ForegroundLight">#ffffff</Color>
     <SolidColorBrush x:Key="ForegroundLightBrush" Color="{StaticResource ForegroundLight}"/>
 
+    <Color x:Key="CloseButtonBackground">#dc5050</Color>
+    <SolidColorBrush x:Key="CloseButtonBackgroundBrush" Color="{StaticResource CloseButtonBackground}"/>
+
 </ResourceDictionary>
