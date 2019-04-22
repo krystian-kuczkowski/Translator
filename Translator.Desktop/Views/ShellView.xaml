@@ -104,13 +104,65 @@
                                         
                                     </Grid>
 
-                                    <!-- content -->
-                                    <Border 
-                                        Grid.Row="1" 
-                                        Background="{StaticResource BackgroundDarkGrayBrush}"
-                                        Padding="{Binding InnerContentPadding}">
+                                    <!-- window content -->
+                                    <Grid
+                                        Grid.Row="1">
                                         
-                                    </Border>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="50"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- menu buttons -->
+                                        <Border 
+                                                Grid.Column="0"
+                                                Background="Transparent">
+                                            
+                                            <StackPanel Orientation="Vertical">
+                                                
+                                                <!-- flag button -->
+                                                <Button
+                                                    Style="{StaticResource MenuButton}">
+                                                    <Button.Content>
+                                                        <Image
+                                                            RenderOptions.BitmapScalingMode="HighQuality"
+                                                            Source="/Images/flag.png"/>
+                                                    </Button.Content>
+                                                </Button>
+
+                                                <!-- file button -->
+                                                <Button
+                                                    Style="{StaticResource MenuButton}">
+                                                    <Button.Content>
+                                                        <Image
+                                                            RenderOptions.BitmapScalingMode="HighQuality"
+                                                            Source="/Images/file.png"/>
+                                                    </Button.Content>
+                                                </Button>
+
+                                                <!-- gear button -->
+                                                <Button
+                                                    Style="{StaticResource MenuButton}">
+                                                    <Button.Content>
+                                                        <Image
+                                                            RenderOptions.BitmapScalingMode="HighQuality"
+                                                            Source="/Images/gear.png"/>
+                                                    </Button.Content>
+                                                </Button>
+
+                                            </StackPanel>
+                                            
+                                        </Border>
+
+                                        <!-- main content -->
+                                        <Border 
+                                                Grid.Column="1"
+                                                Background="{StaticResource BackgroundDarkGrayBrush}"
+                                                Padding="{Binding InnerContentPadding}">
+                                            <!-- main content goes here -->
+                                        </Border>
+
+                                    </Grid>
 
                                 </Grid>
 

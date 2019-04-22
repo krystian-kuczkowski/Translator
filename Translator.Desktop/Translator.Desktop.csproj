@@ -170,9 +170,6 @@
     <Resource Include="Images\delete.png" />
     <Resource Include="Images\error.png" />
     <Resource Include="Images\file.png" />
-    <Resource Include="Images\flag-blue.png" />
-    <Resource Include="Images\flag-green.png" />
-    <Resource Include="Images\folder.png" />
     <Resource Include="Images\left-arrow-green.png" />
     <Resource Include="Images\left-arrow-violet.png" />
     <Resource Include="Images\minus.png" />
@@ -180,7 +177,6 @@
     <Resource Include="Images\repeat.png" />
     <Resource Include="Images\right-arrow-green.png" />
     <Resource Include="Images\right-arrow-violet.png" />
-    <Resource Include="Images\settings.png" />
     <Resource Include="Images\success.png" />
   </ItemGroup>
   <ItemGroup>
@@ -189,7 +185,10 @@
     <Resource Include="Images\minimize.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\close-red.png" />
+    <Resource Include="Images\flag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\gear.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

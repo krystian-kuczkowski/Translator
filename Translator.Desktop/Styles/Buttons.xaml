@@ -29,7 +29,7 @@
     <Style TargetType="{x:Type Button}" x:Key="ImageButton" BasedOn="{StaticResource BaseButtonStyle}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Padding" Value="6"/>
+        <Setter Property="Padding" Value="12 6"/>
         <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
     </Style>
 
@@ -39,6 +39,12 @@
                 <Setter Property="Background" Value="{StaticResource CloseButtonBackgroundBrush}"/>
             </Trigger>
         </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type Button}" x:Key="MenuButton" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="12"/>
     </Style>
 
 </ResourceDictionary>
