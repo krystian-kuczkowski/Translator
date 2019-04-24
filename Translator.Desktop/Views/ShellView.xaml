@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Translator.Desktop.Views"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"   
+        xmlns:cal="http://www.caliburnproject.org"
         mc:Ignorable="d"
         WindowStyle="None"
         MinHeight="{Binding WindowMinimumHeight}"
@@ -17,10 +18,14 @@
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="StateChanged">
             <i:InvokeCommandAction Command="{Binding Path=StateChangedCommand}" 
-                                   CommandParameter="{Binding ElementName=shellView, Path=WindowState}"/>
+                                   CommandParameter="{Binding ElementName=shellView}"/>
         </i:EventTrigger>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding Path=WindowLoadedCommand}"
+                                   CommandParameter="{Binding ElementName=shellView}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="SizeChanged">
+            <i:InvokeCommandAction Command="{Binding Path=SizeChangedCommand}"
                                    CommandParameter="{Binding ElementName=shellView}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
@@ -45,124 +50,151 @@
                                     </Border.Effect>
                                 </Border>
 
-                                <!-- the main window content -->
-                                <Grid>
+                                <!-- window content -->
+                                <Grid
+                                    Grid.Row="1">
 
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="{Binding TitleBarHeightGridLength}"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
 
-                                    <!-- title bar -->
-                                    <Grid Grid.Row="0">
+                                    <!-- menu buttons -->
+                                    <Border 
+                                        Grid.Column="0"
+                                        Background="{StaticResource BackgroundLightGrayBrush}"
+                                        Padding="{Binding MenuBarPadding}">
 
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        
-                                        <!-- buttons -->
-                                        <StackPanel Grid.Column="1" Orientation="Horizontal">
-                                            
-                                            <!-- minimize button -->
+                                        <StackPanel Orientation="Vertical">
+
+                                            <!-- flag button -->
                                             <Button
-                                                Style="{StaticResource ImageButton}"
-                                                Command="{Binding Path=WindowMinimizeCommand}"
-                                                CommandParameter="{Binding ElementName=shellView}">
+                                                Style="{StaticResource MenuButton}"
+                                                Command="{Binding Path=TranslationsViewCommand}">
                                                 <Button.Content>
-                                                    <Image 
-                                                        RenderOptions.BitmapScalingMode="HighQuality" 
-                                                        Source="/Images/minimize.png"/>
-                                                </Button.Content>
-                                            </Button>
-                                            
-                                            <!-- maximize button -->
-                                            <Button
-                                                Style="{StaticResource ImageButton}"
-                                                Command="{Binding Path=WindowMaximizeCommand}"
-                                                CommandParameter="{Binding ElementName=shellView}">
-                                                <Button.Content>
-                                                    <Image
-                                                        RenderOptions.BitmapScalingMode="HighQuality"
-                                                        Source="/Images/maximize.png"/>
+                                                    <StackPanel Orientation="Vertical">
+                                                        <Image
+                                                            Style="{StaticResource MenuImage}"
+                                                            Source="/Images/language-gray.png"/>
+                                                        <TextBlock
+                                                            Style="{StaticResource MenuTextBlockStyle}">
+                                                            Translate
+                                                        </TextBlock>
+                                                    </StackPanel>
                                                 </Button.Content>
                                             </Button>
 
-                                            <!-- close button -->
+                                            <!-- file button -->
                                             <Button
-                                                Style="{StaticResource CloseButton}"
-                                                Command="{Binding Path=WindowCloseCommand}"
-                                                CommandParameter="{Binding ElementName=shellView}">
+                                                 Style="{StaticResource MenuButton}"
+                                                 Command="{Binding Path=FilesViewCommand}">
                                                 <Button.Content>
-                                                    <Image
-                                                        RenderOptions.BitmapScalingMode="HighQuality"
-                                                        Source="/Images/close.png"/>
+                                                    <StackPanel Orientation="Vertical">
+                                                        <Image
+                                                            Style="{StaticResource MenuImage}"
+                                                            Source="/Images/file-gray.png"/>
+                                                        <TextBlock
+                                                            Style="{StaticResource MenuTextBlockStyle}">
+                                                            Files
+                                                        </TextBlock>
+                                                    </StackPanel>
                                                 </Button.Content>
                                             </Button>
-                                            
+
+                                            <!-- gear button -->
+                                            <Button
+                                                Style="{StaticResource MenuButton}"
+                                                Command="{Binding Path=SettingsViewCommand}">
+                                                <Button.Content>
+                                                    <StackPanel Orientation="Vertical">
+                                                        <Image
+                                                            Style="{StaticResource MenuImage}"
+                                                            Source="/Images/settings-gray.png"/>
+                                                        <TextBlock
+                                                            Style="{StaticResource MenuTextBlockStyle}">
+                                                            Settings
+                                                        </TextBlock>
+                                                    </StackPanel>
+                                                </Button.Content>
+                                            </Button>
+
                                         </StackPanel>
-                                        
-                                    </Grid>
 
-                                    <!-- window content -->
-                                    <Grid
-                                        Grid.Row="1">
-                                        
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="50"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
+                                    </Border>
 
-                                        <!-- menu buttons -->
-                                        <Border 
-                                                Grid.Column="0"
-                                                Background="Transparent">
-                                            
-                                            <StackPanel Orientation="Vertical">
-                                                
-                                                <!-- flag button -->
-                                                <Button
-                                                    Style="{StaticResource MenuButton}">
-                                                    <Button.Content>
-                                                        <Image
-                                                            RenderOptions.BitmapScalingMode="HighQuality"
-                                                            Source="/Images/flag.png"/>
-                                                    </Button.Content>
-                                                </Button>
+                                    <Border 
+                                        Grid.Column="1">
 
-                                                <!-- file button -->
-                                                <Button
-                                                    Style="{StaticResource MenuButton}">
-                                                    <Button.Content>
-                                                        <Image
-                                                            RenderOptions.BitmapScalingMode="HighQuality"
-                                                            Source="/Images/file.png"/>
-                                                    </Button.Content>
-                                                </Button>
+                                        <Grid>
 
-                                                <!-- gear button -->
-                                                <Button
-                                                    Style="{StaticResource MenuButton}">
-                                                    <Button.Content>
-                                                        <Image
-                                                            RenderOptions.BitmapScalingMode="HighQuality"
-                                                            Source="/Images/gear.png"/>
-                                                    </Button.Content>
-                                                </Button>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="{Binding TitleBarHeightGridLength}"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
 
-                                            </StackPanel>
-                                            
-                                        </Border>
+                                            <!-- title bar -->
+                                            <Grid Grid.Row="0">
 
-                                        <!-- main content -->
-                                        <Border 
-                                                Grid.Column="1"
-                                                Background="{StaticResource BackgroundDarkGrayBrush}"
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <!-- buttons -->
+                                                <StackPanel Grid.Column="1" Orientation="Horizontal">
+
+                                                    <!-- minimize button -->
+                                                    <Button
+                                                        Style="{StaticResource ImageButton}"
+                                                        Command="{Binding Path=WindowMinimizeCommand}"
+                                                        CommandParameter="{Binding ElementName=shellView}">
+                                                        <Button.Content>
+                                                            <Image 
+                                                                Style="{StaticResource BaseImage}" 
+                                                                Source="/Images/minimize.png"/>
+                                                        </Button.Content>
+                                                    </Button>
+
+                                                    <!-- maximize button -->
+                                                    <Button
+                                                        Style="{StaticResource ImageButton}"
+                                                        Command="{Binding Path=WindowMaximizeCommand}"
+                                                        CommandParameter="{Binding ElementName=shellView}">
+                                                        <Button.Content>
+                                                            <Image
+                                                                Style="{StaticResource BaseImage}"
+                                                                Source="/Images/maximize.png"/>
+                                                        </Button.Content>
+                                                    </Button>
+
+                                                    <!-- close button -->
+                                                    <Button
+                                                        Style="{StaticResource CloseButton}"
+                                                        Command="{Binding Path=WindowCloseCommand}"
+                                                        CommandParameter="{Binding ElementName=shellView}">
+                                                        <Button.Content>
+                                                            <Image
+                                                                Style="{StaticResource BaseImage}"
+                                                                Source="/Images/close.png"/>
+                                                        </Button.Content>
+                                                    </Button>
+
+                                                </StackPanel>
+
+                                            </Grid>
+
+                                            <!-- main content -->
+                                            <Border Grid.Row="1"
+                                                Background="{StaticResource ForegroundLightBrush}"
                                                 Padding="{Binding InnerContentPadding}">
-                                            <!-- main content goes here -->
-                                        </Border>
 
-                                    </Grid>
+                                                <ContentControl cal:View.Model="{Binding ViewModel}"/>
+
+                                            </Border>
+
+                                        </Grid>
+
+                                    </Border>
 
                                 </Grid>
 
@@ -184,8 +216,4 @@
             GlassFrameThickness="0"/>
     </WindowChrome.WindowChrome>
 
-    <!--<Grid Background="{StaticResource BackgroundDarkBrush}">
-
-    </Grid>-->
-    
 </Window>
