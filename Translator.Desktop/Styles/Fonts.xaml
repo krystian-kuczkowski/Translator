@@ -2,15 +2,15 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Translator.Desktop.Styles">
 
-    <FontFamily x:Key="LatoRegular">pack://application;,,,/Fonts/#Lato Regular</FontFamily>
-    <FontFamily x:Key="LatoThin">pack://application;,,,/Fonts/#Lato Thin</FontFamily>
+    <FontFamily x:Key="MontserratRegular">pack://application;,,,/Fonts/#Montserrat</FontFamily>
+    <FontFamily x:Key="MontserratLight">pack://application;,,,/Fonts/#Montserrat Light</FontFamily>
 
     <Style TargetType="{x:Type Control}" x:Key="BaseStyle">
-        <Setter Property="FontFamily" Value="{StaticResource LatoThin}"/>
+        <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"/>
     </Style>
 
     <Style TargetType="{x:Type TextBlock}" x:Key="BaseTextBlockStyle">
-        <Setter Property="FontFamily" Value="{StaticResource LatoThin}"/>
+        <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"/>
     </Style>
 
     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}"/>
