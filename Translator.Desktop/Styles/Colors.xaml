@@ -5,13 +5,13 @@
     <Color x:Key="BackgroundDark">#222222</Color>
     <SolidColorBrush x:Key="BackgroundDarkBrush" Color="{StaticResource BackgroundDark}"/>
 
-    <Color x:Key="BackgroundDarkGray">#323232</Color>
+    <Color x:Key="BackgroundDarkGray">#bababa</Color>
     <SolidColorBrush x:Key="BackgroundDarkGrayBrush" Color="{StaticResource BackgroundDarkGray}"/>
 
-    <Color x:Key="BackgroundLightGray">#3a3a3a</Color>
+    <Color x:Key="BackgroundLightGray">#d9d9d9</Color>
     <SolidColorBrush x:Key="BackgroundLightGrayBrush" Color="{StaticResource BackgroundLightGray}"/>
 
-    <Color x:Key="ForegroundDark">#767676</Color>
+    <Color x:Key="ForegroundDark">#646464</Color>
     <SolidColorBrush x:Key="ForegroundDarkBrush" Color="{StaticResource ForegroundDark}"/>
 
     <Color x:Key="ForegroundLight">#ffffff</Color>
