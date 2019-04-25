@@ -16,4 +16,11 @@
         <Setter Property="TextOptions.TextRenderingMode" Value="Auto"/>
     </Style>
 
+    <Style TargetType="{x:Type TextBlock}" x:Key="ViewTextBlockStyle" BasedOn="{StaticResource BaseTextBlockStyle}">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{StaticResource ForegroundDarkBrush}"/>
+        <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"/>
+        <Setter Property="TextOptions.TextRenderingMode" Value="Auto"/>
+    </Style>
+
 </ResourceDictionary>

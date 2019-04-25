@@ -44,7 +44,14 @@
     <Style TargetType="{x:Type Button}" x:Key="MenuButton" BasedOn="{StaticResource BaseButtonStyle}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontSize" Value="13"/>
         <Setter Property="Padding" Value="8 12"/>
+    </Style>
+
+    <Style TargetType="{x:Type Button}" x:Key="ViewButton" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="Background" Value="{StaticResource BackgroundLightGrayBrush}"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="FontSize" Value="15"/>
     </Style>
 
 </ResourceDictionary>
