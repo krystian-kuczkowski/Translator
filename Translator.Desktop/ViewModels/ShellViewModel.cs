@@ -16,7 +16,7 @@ namespace Translator.Desktop.ViewModels
     {
         private readonly int _outerMarginSize = 10;
         private readonly int _windowRadius = 0;
-        private readonly int _contentPadding = 10;
+        private readonly int _contentPadding = 20;
 
         private WindowState _windowState;
         private DockHandler _dockHandler;
