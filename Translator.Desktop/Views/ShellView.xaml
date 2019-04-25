@@ -12,7 +12,7 @@
         MinHeight="{Binding WindowMinimumHeight}"
         MinWidth="{Binding WindowMinimumWidth}"
         AllowsTransparency="True"
-        Title="ShellView" Height="400" Width="500" x:Name="shellView">
+        Title="ShellView" Height="500" Width="450" x:Name="shellView">
 
     <!-- installed Expression.Blend.Sdk -->
     <i:Interaction.Triggers>
