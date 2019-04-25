@@ -4,9 +4,102 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Translator.Desktop.Views"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Path=ViewLoadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{Binding GridContentLength}"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel
+            Grid.Column="0">
             
+            <!-- title -->
+            <TextBlock 
+                FontSize="28"
+                Style="{StaticResource ViewTextBlockStyle}">
+                Settings</TextBlock>
+            
+            <!-- source language -->
+            <Grid 
+                Margin="0 18 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Grid.Column="0"
+                    FontSize="16"
+                    Style="{StaticResource ViewTextBlockStyle}">
+                    Source language
+                </TextBlock>
+
+                <ComboBox
+                    Grid.Column="1"
+                    FontSize="15"
+                    ItemsSource="{Binding Languages}"
+                    Style="{StaticResource ComboBoxFlatStyle}"
+                    SelectedValue="{Binding SourceLanguage}">
+                    
+                </ComboBox>
+                
+            </Grid>
+
+            <!-- target language -->
+            <Grid 
+                Margin="0 12 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Grid.Column="0"
+                    FontSize="16"
+                    Style="{StaticResource ViewTextBlockStyle}">
+                    Target language
+                </TextBlock>
+
+                <ComboBox
+                    Grid.Column="1"
+                    FontSize="15"
+                    ItemsSource="{Binding Languages}"
+                    Style="{StaticResource ComboBoxFlatStyle}"
+                    SelectedValue="{Binding TargetLanguage}">
+
+                </ComboBox>
+
+            </Grid>
+
+            <!-- button -->
+            <Grid
+                Margin="0 20 0 0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button 
+                Grid.Column="0"
+                Style="{StaticResource ViewButton}"
+                Command="{Binding ConfirmCommand}">
+                    Save
+                </Button>
+
+            </Grid>
+
+        </StackPanel>
+        
     </Grid>
 </UserControl>
