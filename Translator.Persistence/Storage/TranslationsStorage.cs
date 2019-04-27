@@ -38,10 +38,17 @@ namespace Translator.Persistence.Storage
 
         public void AppendTranslationData(TranslationData translationData)
         {
-            var path = Path.Combine(_storageSettings.DirectoryName, _storageSettings.CurrentFileName = ".txt");
+            var path = Path.Combine(_storageSettings.DirectoryName, _storageSettings.CurrentFileName + ".txt");
 
-            File.AppendAllLines(_storageSettings.CurrentFileName,
-                new string[] { translationData.ToString() });
+            if (!File.Exists(path))
+                return;
+
+            var lastLine = File.ReadAllLines(path).LastOrDefault();
+
+            if (lastLine != null && lastLine.Equals(translationData.ToString()))
+                return;
+
+            File.AppendAllLines(path, new string[] { translationData.ToString() });
         }
 
         public IEnumerable<string> GetFiles()
