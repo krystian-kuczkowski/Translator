@@ -26,7 +26,7 @@ namespace Translator.Desktop.ViewModels
         public Language SourceLanguage { get; set; }
         public Language TargetLanguage { get; set; }
 
-        public ICommand ConfirmCommand { get; private set; }
+        public ICommand ChangeLanguageCommand { get; private set; }
         public ICommand ViewLoadedCommand { get; private set; }
 
         public SettingsViewModel(ILanguageSettings languageSettings)
@@ -36,7 +36,7 @@ namespace Translator.Desktop.ViewModels
             SourceLanguage = _languageSettings.SourceLanguage;
             TargetLanguage = _languageSettings.TargetLanguage;
 
-            ConfirmCommand = new RelayCommand(param => {
+            ChangeLanguageCommand = new RelayCommand(param => {
                 _languageSettings.SourceLanguage = SourceLanguage;
                 _languageSettings.TargetLanguage = TargetLanguage;
             });
