@@ -17,6 +17,8 @@
                 <ResourceDictionary Source="Styles/Windows.xaml"/>
                 <ResourceDictionary Source="Styles/Images.xaml"/>
                 <ResourceDictionary Source="Styles/ComboBoxes.xaml"/>
+                <ResourceDictionary Source="Styles/TextBoxes.xaml"/>
+                <ResourceDictionary Source="Styles/ListBoxes.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
