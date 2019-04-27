@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Translator.Application.Helpers;
 using Translator.Application.Services;
@@ -22,6 +23,8 @@ namespace Translator.Integration.Services
 
         public string GetTranslation(string source)
         {
+            source = Regex.Replace(source, "[!?,.]", " ");
+
             var requestUrl = GetRequestUrl(source);
 
             var response = _httpClient.GetAsync(requestUrl).GetAwaiter().GetResult();
