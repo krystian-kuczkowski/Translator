@@ -104,17 +104,23 @@ namespace Translator.Desktop.ViewModels
 
         private readonly TranslationsViewModel _translationsViewModel;
         private readonly FilesViewModel _filesViewModel;
+        private readonly AddFileViewModel _addFileViewModel;
         private readonly SettingsViewModel _settingsViewModel;
 
         public BaseViewModel ViewModel { get; set; }
 
-        public ShellViewModel(TranslationsViewModel translationsViewModel, FilesViewModel filesViewModel, SettingsViewModel settingsViewModel)
+        public ShellViewModel(TranslationsViewModel translationsViewModel, FilesViewModel filesViewModel, 
+        AddFileViewModel addFileViewModel, SettingsViewModel settingsViewModel)
         {
             InitCommands();
 
             _translationsViewModel = translationsViewModel;
             _filesViewModel = filesViewModel;
+            _addFileViewModel = addFileViewModel;
             _settingsViewModel = settingsViewModel;
+
+            _filesViewModel.AddFileButtonClicked += OnAddFileButtonClicked;
+            _addFileViewModel.FileAdded += OnFileAdded;
 
             ViewModel = _translationsViewModel;
         }
@@ -166,6 +172,18 @@ namespace Translator.Desktop.ViewModels
                 ViewModel = _settingsViewModel;
                 OnPropertyChanged(nameof(ViewModel));
             });
+        }
+
+        protected void OnAddFileButtonClicked(object sender, EventArgs args)
+        {
+            ViewModel = _addFileViewModel;
+            OnPropertyChanged(nameof(ViewModel));
+        }
+
+        protected void OnFileAdded(object sender, EventArgs args)
+        {
+            ViewModel = _filesViewModel;
+            OnPropertyChanged(nameof(ViewModel));
         }
 
         private void OnWindowResized()
