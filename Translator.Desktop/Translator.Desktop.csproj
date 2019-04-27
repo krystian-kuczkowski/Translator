@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>translation.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Caliburn.Micro, Version=3.2.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
       <HintPath>..\packages\Caliburn.Micro.Core.3.2.0\lib\net45\Caliburn.Micro.dll</HintPath>
@@ -208,6 +211,20 @@
     <Resource Include="Images\file-gray.png" />
     <Resource Include="Images\language-gray.png" />
     <Resource Include="Images\settings-gray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\file-white.png" />
+    <Resource Include="Images\language-white.png" />
+    <Resource Include="Images\settings-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\translation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\translation.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="translation.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
