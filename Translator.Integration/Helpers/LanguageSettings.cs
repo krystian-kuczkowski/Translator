@@ -10,38 +10,33 @@ namespace Translator.Integration.Helpers
 {
     public class LanguageSettings : BaseSettings, ILanguageSettings
     {
-        private Language _sourceLanguage;
-
         public Language SourceLanguage
         {
             get {
-                return _sourceLanguage;
+                Enum.TryParse(GetFromConfig("source"), out Language sourceLanguage);
+
+                return sourceLanguage;
             }
             set {
-                _sourceLanguage = value;
-
-                SaveInConfig("source", _sourceLanguage.ToString());
+                SaveInConfig("source", value.ToString());
             }
         }
-
-        private Language _targetLanguage;
 
         public Language TargetLanguage
         {
             get {
-                return _targetLanguage;
+                Enum.TryParse(GetFromConfig("target"), out Language targetLanguage);
+
+                return targetLanguage;
             }
             set {
-                _targetLanguage = value;
-
-                SaveInConfig("target", _targetLanguage.ToString());
+                SaveInConfig("target", value.ToString());
             }
         }
 
         public LanguageSettings()
         {
-            Enum.TryParse(GetFromConfig("target"), out _targetLanguage);
-            Enum.TryParse(GetFromConfig("source"), out _sourceLanguage);
+            
         }
     }
 }
