@@ -18,23 +18,17 @@
             Grid.Column="0">
 
             <!-- title -->
-            <TextBlock 
-                FontSize="28"
-                Style="{StaticResource ViewTextBlockStyle}">
-                Files</TextBlock>
-
-            <Grid 
-                Margin="0 18 0 0">
+            <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="5*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock
+                <TextBlock 
                     Grid.Column="0"
-                    FontSize="16"
+                    FontSize="28"
                     Style="{StaticResource ViewTextBlockStyle}">
-                    Current file
+                    Files
                 </TextBlock>
 
                 <TextBlock
@@ -45,13 +39,14 @@
                     Text="{Binding CurrentFile}">
                 </TextBlock>
 
+
             </Grid>
 
             <TextBlock
                     Margin="0 16 0 0"
                     FontSize="16"
-                    Style="{StaticResource ViewTextBlockStyle}">
-                    All files
+                    Style="{StaticResource ViewTextBlockStyle}"
+                    Text="{Binding ListBoxTitle}">
             </TextBlock>
 
             <ListBox

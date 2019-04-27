@@ -4,9 +4,117 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Translator.Desktop.Views"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <!--<i:Interaction.Triggers>
+        <i:EventTrigger EventName="KeyDown">
+            <i:InvokeCommandAction Command="" 
+                                   CommandParameter=""/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>-->
+
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{Binding GridContentLength}"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel
+            Grid.Column="0">
+
+            <!-- title -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="14*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock 
+                    Grid.Column="0"
+                    FontSize="28"
+                    Style="{StaticResource ViewTextBlockStyle}">
+                    Translate
+                </TextBlock>
+
+                <TextBlock
+                    Grid.Column="1"
+                    FontSize="16"
+                    Style="{StaticResource ViewTextBlockStyle}"
+                    Text="{Binding SourceLanguage}"
+                    HorizontalAlignment="Left">
+                </TextBlock>
+
+                <TextBlock
+                    Grid.Column="2"
+                    FontSize="16"
+                    Style="{StaticResource ViewTextBlockStyle}"
+                    Text="-"
+                    HorizontalAlignment="Center">
+                </TextBlock>
+
+                <TextBlock
+                    Grid.Column="3"
+                    FontSize="16"
+                    Style="{StaticResource ViewTextBlockStyle}"
+                    Text="{Binding TargetLanguage}"
+                    HorizontalAlignment="Right">
+                </TextBlock>
+
+            </Grid>
+
+            <!-- source text box -->
+            <TextBox
+                Margin="0 18 0 0"
+                Style="{StaticResource ViewTextBox}"
+                Text="{Binding SourceText, Mode=TwoWay, 
+                UpdateSourceTrigger=PropertyChanged}"
+                TextWrapping="Wrap"
+                AcceptsReturn="False"
+                Height="47"
+                MaxLength="70">
+                <TextBox.InputBindings>
+                    <KeyBinding
+                        Key="Return"
+                        Command="{Binding TranslateCommand}"/>
+                </TextBox.InputBindings>
+            </TextBox>
+
+            <!-- button -->
+            <Grid
+                Margin="0 12 0 0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button 
+                Grid.Column="0"
+                Style="{StaticResource ViewButton}"
+                Command="{Binding TranslateCommand}">
+                    Translate
+                </Button>
+
+            </Grid>
+
+            <!-- target text box -->
+            <TextBox
+                Margin="0 12 0 0"
+                Style="{StaticResource ViewTextBox}"
+                Text="{Binding TargetText, Mode=TwoWay, 
+                UpdateSourceTrigger=PropertyChanged}"
+                TextWrapping="Wrap"
+                AcceptsReturn="False"
+                Height="70"
+                IsReadOnly="True">
+
+            </TextBox>
+
+        </StackPanel>
+
     </Grid>
 </UserControl>

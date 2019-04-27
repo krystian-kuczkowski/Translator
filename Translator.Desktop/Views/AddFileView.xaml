@@ -21,6 +21,7 @@
                 Style="{StaticResource ViewTextBlockStyle}">
                 Add File</TextBlock>
 
+            <!-- file name label -->
             <TextBlock
                 Margin="0 18 0 0"
                 FontSize="16"
@@ -28,15 +29,15 @@
                 File name
             </TextBlock>
 
+            <!-- file name text box -->
             <TextBox
                 Margin="0 4 0 0"
                 Style="{StaticResource ViewTextBox}"
                 Text="{Binding FileName, Mode=TwoWay, 
                 UpdateSourceTrigger=PropertyChanged}">
-
             </TextBox>
 
-            <!-- button -->
+            <!-- grid with the button -->
             <Grid
                 Margin="0 20 0 0">
 
