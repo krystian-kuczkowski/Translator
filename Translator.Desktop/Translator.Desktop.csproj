@@ -71,11 +71,15 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Helpers\DockHandler.cs" />
     <Compile Include="Helpers\WindowResizer.cs" />
+    <Compile Include="ViewModels\AddFileViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\FilesViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\TranslationsViewModel.cs" />
+    <Compile Include="Views\AddFileView.xaml.cs">
+      <DependentUpon>AddFileView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FilesView.xaml.cs">
       <DependentUpon>FilesView.xaml</DependentUpon>
     </Compile>
@@ -112,11 +116,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Styles\ListBoxes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\TextBoxes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\Texts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\Windows.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddFileView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
