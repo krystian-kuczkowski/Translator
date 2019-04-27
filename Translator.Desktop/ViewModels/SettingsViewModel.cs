@@ -14,7 +14,6 @@ namespace Translator.Desktop.ViewModels
     public class SettingsViewModel : BaseViewModel
     {
         private readonly ILanguageSettings _languageSettings;
-        private double _gridContentLength = 300;
 
         public IEnumerable<Language> Languages
         {
@@ -29,14 +28,6 @@ namespace Translator.Desktop.ViewModels
 
         public ICommand ConfirmCommand { get; private set; }
         public ICommand ViewLoadedCommand { get; private set; }
-
-        public GridLength GridContentLength
-        {
-            get
-            {
-                return new GridLength(_gridContentLength);
-            }
-        }
 
         public SettingsViewModel(ILanguageSettings languageSettings)
         {
