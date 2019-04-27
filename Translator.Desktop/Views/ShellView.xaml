@@ -12,7 +12,7 @@
         MinHeight="{Binding WindowMinimumHeight}"
         MinWidth="{Binding WindowMinimumWidth}"
         AllowsTransparency="True"
-        Title="ShellView" Height="400" Width="450" x:Name="shellView" Topmost="True">
+        Title="Translator" Height="400" Width="450" x:Name="shellView" Topmost="True">
 
     <!-- installed Expression.Blend.Sdk -->
     <i:Interaction.Triggers>
@@ -62,7 +62,7 @@
                                     <!-- menu buttons -->
                                     <Border 
                                         Grid.Column="0"
-                                        Background="{StaticResource BackgroundLightGrayBrush}"
+                                        Background="{StaticResource BackgroundLightOrangeBrush}"
                                         Padding="{Binding MenuBarPadding}">
 
                                         <StackPanel Orientation="Vertical">
@@ -75,7 +75,7 @@
                                                     <StackPanel Orientation="Vertical">
                                                         <Image
                                                             Style="{StaticResource MenuImage}"
-                                                            Source="/Images/language-gray.png"/>
+                                                            Source="/Images/language-white.png"/>
                                                         <TextBlock
                                                             Style="{StaticResource MenuTextBlockStyle}">
                                                             Translate
@@ -92,7 +92,7 @@
                                                     <StackPanel Orientation="Vertical">
                                                         <Image
                                                             Style="{StaticResource MenuImage}"
-                                                            Source="/Images/file-gray.png"/>
+                                                            Source="/Images/file-white.png"/>
                                                         <TextBlock
                                                             Style="{StaticResource MenuTextBlockStyle}">
                                                             Files
@@ -109,7 +109,7 @@
                                                     <StackPanel Orientation="Vertical">
                                                         <Image
                                                             Style="{StaticResource MenuImage}"
-                                                            Source="/Images/settings-gray.png"/>
+                                                            Source="/Images/settings-white.png"/>
                                                         <TextBlock
                                                             Style="{StaticResource MenuTextBlockStyle}">
                                                             Settings

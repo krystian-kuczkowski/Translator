@@ -10,7 +10,7 @@
     <Style TargetType="{x:Type TextBlock}" x:Key="MenuTextBlockStyle" BasedOn="{StaticResource BaseTextBlockStyle}">
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="Foreground" Value="{StaticResource ForegroundDarkBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource ForegroundLightBrush}"/>
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"/>
         <Setter Property="TextOptions.TextRenderingMode" Value="Auto"/>
