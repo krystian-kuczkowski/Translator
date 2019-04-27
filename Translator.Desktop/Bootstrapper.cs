@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Translator.Application.Business;
 using Translator.Application.Helpers;
 using Translator.Application.Services;
 using Translator.Application.Storage;
@@ -37,7 +38,8 @@ namespace Translator.Desktop
                 .PerRequest<ILanguageSettings, LanguageSettings>()
                 .PerRequest<IStorageSettings, StorageSettings>()
                 .PerRequest<ITranslationService, TranslationService>()
-                .PerRequest<ITranslationsStorage, TranslationsStorage>();
+                .PerRequest<ITranslationsStorage, TranslationsStorage>()
+                .PerRequest<TranslationsProvider>();
 
             GetType().Assembly.GetTypes()
                 .Where(type => type.IsClass)
