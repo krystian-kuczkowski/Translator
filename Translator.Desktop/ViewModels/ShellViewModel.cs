@@ -28,7 +28,7 @@ namespace Translator.Desktop.ViewModels
 
         public double WindowMinimumHeight
         {
-            get => 300;
+            get => 350;
         }
 
         public int ResizeBorder
