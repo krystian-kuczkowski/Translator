@@ -13,31 +13,38 @@ namespace Translator.Persistence.Helpers
     {
         public string DirectoryName {
             get {
-                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Translations");
+                var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Translations");
+
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
+
+                return path;
             }
         }
 
-        private string _currentFileName;
-
         public string CurrentFileName {
             get {
-                return _currentFileName;
+                var file = GetFromConfig("file");
+
+                if (String.IsNullOrWhiteSpace(file))
+                    file = null;
+
+                if (!GetFileNames().Contains(file))
+                    file = null;
+
+                return file;
             }
             set {
                 if (!GetFileNames().Contains(value))
-                    throw new ApplicationException("No file with given name in the directory.");
+                    return;
 
-                _currentFileName = value;
-
-                SaveInConfig("file", _currentFileName);
+                SaveInConfig("file", value);
             }
         }
 
         public StorageSettings()
         {
-            var file = GetFromConfig("file");
-
-            _currentFileName = String.IsNullOrWhiteSpace(file) ? null : file;
+            
         }
 
         private IEnumerable<string> GetFileNames()
