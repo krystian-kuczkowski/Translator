@@ -30,6 +30,15 @@ namespace Translator.Desktop.ViewModels
             }
         }
 
+        public string ListBoxTitle {
+            get {
+                if (_translationsStorage.GetFiles().Count() == 0)
+                    return "No files";
+
+                return "Your files";
+            }
+        }
+
         public string SelectedFile { get; set; }
 
         public ICommand AddFileCommand { get; private set; }
@@ -49,6 +58,7 @@ namespace Translator.Desktop.ViewModels
 
             RefreshCommand = new RelayCommand(param => {
                 OnPropertyChanged(nameof(Files));
+                OnPropertyChanged(nameof(ListBoxTitle));
                 OnPropertyChanged(nameof(CurrentFile));
             });
 
