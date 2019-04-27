@@ -23,4 +23,8 @@
         <Setter Property="TextOptions.TextRenderingMode" Value="Auto"/>
     </Style>
 
+    <Style TargetType="{x:Type TextBlock}" x:Key="ListBoxTextBlockStyle" BasedOn="{StaticResource BaseTextBlockStyle}">
+        <Setter Property="FontSize" Value="15"/>
+    </Style>
+
 </ResourceDictionary>
